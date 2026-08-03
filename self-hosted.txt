@@ -1,0 +1,35 @@
+
+./run.sh
+./config.sh --url https://github.com/Web4application/Nextn --token BH6MBWAXILBGB5FEIIKRZJDKODAE6
+
+curl -o actions-runner-linux-x64-2.336.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.336.0/actions-runner-linux-x64-2.336.0.tar.gz
+
+echo "04cf0be1aff4c3ec3554466c39124ca250e3effd8873bb7e8d68535aa9505d5d  actions-runner-linux-x64-2.336.0.tar.gz" | shasum -a 256 -c
+
+tar xzf ./actions-runner-linux-x64-2.336.0.tar.gz
+
+mkdir actions-runner && cd actions-runner
+
+if((Get-FileHash -Path actions-runner-win-x64-2.336.0.zip -Algorithm SHA256).Hash.ToUpper() -ne 'd59123a43003e357b0805b5d0f611d0bd2f65ab67d51bd070dd4e7a0f685c162'.ToUpper()){ throw 'Computed checksum did not match' }
+
+
+Invoke-WebRequest -Uri https://github.com/actions/runner/releases/download/v2.336.0/actions-runner-win-x64-2.336.0.zip -OutFile actions-runner-win-x64-2.336.0.zip
+
+Add-Type -AssemblyName System.IO.Compression.FileSystem ; [System.IO.Compression.ZipFile]::ExtractToDirectory("$PWD/actions-runner-win-x64-2.336.0.zip", "$PWD")
+
+./config.cmd --url https://github.com/Web4application/Nextn --token BH6MBWAXILBGB5FEIIKRZJDKODAE6
+
+runs-on: self-hosted
+
+Invoke-WebRequest -Uri https://github.com/actions/runner/releases/download/v2.336.0/actions-runner-win-x64-2.336.0.zip -OutFile actions-runner-win-x64-2.336.0.zip
+
+
+curl -o actions-runner-osx-x64-2.336.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.336.0/actions-runner-osx-x64-2.336.0.tar.gz
+
+echo "f79c43232761ca495fc18df550bb2865aa99984b37c173c0aa1f8c09d0d548fe  actions-runner-osx-x64-2.336.0.tar.gz" | shasum -a 256 -c
+
+tar xzf ./actions-runner-osx-x64-2.336.0.tar.gz
+
+./config.sh --url https://github.com/Web4application/Nextn --token BH6MBWAXILBGB5FEIIKRZJDKODAE6
+
+runs-on: self-hosted
