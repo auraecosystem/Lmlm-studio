@@ -1,4 +1,4 @@
-
+runs-on: self-hosted
 ./run.sh
 ./config.sh --url https://github.com/Web4application/Nextn --token BH6MBWAXILBGB5FEIIKRZJDKODAE6
 
@@ -32,4 +32,3 @@ tar xzf ./actions-runner-osx-x64-2.336.0.tar.gz
 
 ./config.sh --url https://github.com/Web4application/Nextn --token BH6MBWAXILBGB5FEIIKRZJDKODAE6
 
-runs-on: self-hosted
