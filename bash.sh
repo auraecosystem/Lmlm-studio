@@ -1,10 +1,16 @@
+# Fetch paper
+curl -X POST "http://localhost:8080/api/v1/papers/2301.00001/fetch?source=true"
+
+# Export as BibTeX
+curl http://localhost:8080/api/v1/papers/2301.00001/export/bibtex > paper.bib
+
 # 1. Scaffold a metadata file.
 kaggle competitions init ./my-comp
 
-# 2. Edit ./my-comp/competition-metadata.json (fill in the INSERT_* placeholders).
-
+# 2. Edit ./arc-prize-2026-paper-track/competition-metadata.json (fill in the INSERT_* placeholders).
+# 2. Edit ./arc-prize-2026-paper-track/competition-metadata.json (fill in the INSERT_* placeholders).
 # 3. Create the (unlaunched) competition.
-kaggle competitions create -p ./my-comp
+kaggle competitions create -p ./competition
 # → Competition created: https://www.kaggle.com/competitions/my-comp-slug
 
 # 4. Author the description and rules pages.
